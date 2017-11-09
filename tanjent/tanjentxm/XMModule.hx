@@ -548,11 +548,7 @@ class XMModule
 			// fadeout active?
 			if (this.channel.fadeOut != XMInstrument.FADEOUT_MAX) {
 				this.channel.volumeFactorTickEnd *= (this.channel.fadeOut / XMInstrument.FADEOUT_MAX);
-<<<<<<< HEAD:tanjent/tanjentxm/XMModule.hx
 				//trace(this.channel.volumeFactorTickEnd + " " + this.channel.fadeOut + " " + XMInstrument.FADEOUT_MAX);
-=======
-				//trace(this.channel.volumeFactorTickEnd + " " + this.channel.fadeOut + " " + XMInstrument.FADEOUT_MAX);
->>>>>>> 974fc1d17194dbeb3f019a54af0ee4b88a638d6e:tanjent/tanjentxm/XMModule.hx
 			}
 										
 			// panning envelope active?
@@ -1459,11 +1455,7 @@ class XMModule
 		// advance volume envelope
 		if (instrument.volumeEnvelopeEnabled == true && channel.volumeEnvelopeDone == false)
 		{			
-<<<<<<< HEAD:tanjent/tanjentxm/XMModule.hx
 			//trace(this.patternRow + " " + channel.volumeEnvelopeTick + " " + channel.volumeEnvelopeValue);
-=======
-			//trace(this.patternRow + " " + channel.volumeEnvelopeTick + " " + channel.volumeEnvelopeValue);
->>>>>>> 974fc1d17194dbeb3f019a54af0ee4b88a638d6e:tanjent/tanjentxm/XMModule.hx
 			if (instrument.volumeEnvelopeTicks[channel.volumeEnvelopePoint] == channel.volumeEnvelopeTick)
 			{
 				if (instrument.volumeEnvelopeSustainEnabled == true &&
