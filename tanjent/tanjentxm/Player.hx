@@ -65,7 +65,7 @@ class Player
 	/// 2048 samples has a tendency to stutter in the Flash player.
 	/// Latency at a sample rate of 44100: 8192 = 0.18s = 185msec; 4096 = 0.09s = 93msec; 2048 = 0.04s = 46 msec	
 	/// Call frequency at 44100: 8192 = 5.3 Hz; 4096 = 10.7 Hz; 2048 = 21.5 Hz
-	private static inline var BUFFER_SIZE:Int = 2048;
+	private var BUFFER_SIZE:Int = 2048;
 	
 	private var samplesWritten:Int;
 	private var samplesLeftInBuffer:Int;
@@ -97,8 +97,9 @@ class Player
 	 * @param sampleRate the sample rate to use (usually 44100 samples/second).
 	 * @param interpolationMode the interpolation mode to use (Player.INTERPOLATION_MODE...)
 	 */	
-	public function new(sampleRate:Int = 44100, interpolationMode:Int = Player.INTERPOLATION_MODE_NONE) 
+	public function new(sampleRate:Int = 44100, interpolationMode:Int = Player.INTERPOLATION_MODE_NONE, buffer_size:Int = 8192) 
 	{
+		this.BUFFER_SIZE = buffer_size;
 		this.modules = new Array<XMModule>();
 		this.currentModule = null;
 		this.nextModule = null;
@@ -154,7 +155,7 @@ class Player
 				this.samplesWritten++;
 				this.bufferPosition++;
 				this.samplesLeftInBuffer--;
-				if (this.samplesWritten >= Player.BUFFER_SIZE) return;
+				if (this.samplesWritten >= BUFFER_SIZE) return;
 			}
 		}
 		
@@ -183,11 +184,11 @@ class Player
 				this.samplesWritten++;
 				this.bufferPosition++;
 				this.samplesLeftInBuffer--;												
-				if (this.samplesWritten >= Player.BUFFER_SIZE) break;
+				if (this.samplesWritten >= BUFFER_SIZE) break;
 			}		
 			
 			// filled the entire sample buffer?
-			if (this.samplesWritten >= Player.BUFFER_SIZE) return;			
+			if (this.samplesWritten >= BUFFER_SIZE) return;			
 		}		
 	}
 	
@@ -244,7 +245,7 @@ class Player
 				this.samplesWritten++;
 				this.bufferPosition++;
 				this.samplesLeftInBuffer--;
-				if (this.samplesWritten >= Player.BUFFER_SIZE) return;
+				if (this.samplesWritten >= BUFFER_SIZE) return;
 			}
 		}
 		
@@ -313,11 +314,11 @@ class Player
 				this.samplesWritten++;
 				this.bufferPosition++;
 				this.samplesLeftInBuffer--;
-				if (this.samplesWritten >= Player.BUFFER_SIZE) break;
+				if (this.samplesWritten >= BUFFER_SIZE) break;
 			}
 			
 			// filled the entire sample buffer?
-			if (this.samplesWritten >= Player.BUFFER_SIZE) return;		
+			if (this.samplesWritten >= BUFFER_SIZE) return;		
 		}
 	}
 	
